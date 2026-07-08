@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rakesh Baruah - Senior Full Stack Engineer. .NET/C#, React/TypeScript, Enterprise AI.">
+
+<title>Rakesh Baruah — Senior Full Stack Engineer</title>
+<style>
+  /* ── Tokens ── */
+  :root {
+    --bg:       #F5F4F0;
+    --bg-card:  #ECEAE4;
+    --fg:       #0D1B2A;
+    --fg-muted: #4A5568;
+    --accent:   #C49A0A;
+    --accent-hi: #D4A017;
+    --border:   #D1CDC4;
+    --tag-bg:   #E2DFD8;
+    --mono: 'Courier New', Courier, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --serif: Georgia, 'Times New Roman', serif;
+    --radius: 4px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:       #0D1B2A;
+      --bg-card:  #162232;
+      --fg:       #EFF1ED;
+      --fg-muted: #8CA0B3;
+      --accent:   #D4A017;
+      --accent-hi: #E8B429;
+      --border:   #1E3248;
+      --tag-bg:   #1A2C3E;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg:       #F5F4F0;
+    --bg-card:  #ECEAE4;
+    --fg:       #0D1B2A;
+    --fg-muted: #4A5568;
+    --accent:   #C49A0A;
+    --accent-hi: #D4A017;
+    --border:   #D1CDC4;
+    --tag-bg:   #E2DFD8;
+  }
+  :root[data-theme="dark"] {
+    --bg:       #0D1B2A;
+    --bg-card:  #162232;
+    --fg:       #EFF1ED;
+    --fg-muted: #8CA0B3;
+    --accent:   #D4A017;
+    --accent-hi: #E8B429;
+    --border:   #1E3248;
+    --tag-bg:   #1A2C3E;
+  }
+
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    line-height: 1.6;
+    transition: background 0.25s, color 0.25s;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 2.5rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--fg-muted);
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--fg); }
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .theme-toggle:hover { color: var(--fg); border-color: var(--fg-muted); }
+
+  /* ── Sections ── */
+  section { padding: 6rem 2.5rem; max-width: 1120px; margin: 0 auto; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  /* ── Hero ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 6rem;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: normal;
+    line-height: 1.02;
+    text-wrap: balance;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-tagline {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    color: var(--fg-muted);
+    max-width: 620px;
+    line-height: 1.65;
+    margin-bottom: 3rem;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #0D1B2A;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 700;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-hi); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.75rem;
+    border-radius: var(--radius);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--fg-muted); color: var(--fg); }
+  .hero-scroll {
+    margin-top: 5rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-line { animation: none; }
+  }
+
+  /* ── About ── */
+  #about .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: normal;
+    line-height: 1.25;
+    text-wrap: balance;
+    margin-bottom: 1.25rem;
+  }
+  .about-text p {
+    color: var(--fg-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  /* ── Skills ── */
+  #skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--fg-muted);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Projects ── */
+  #projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.25rem;
+  }
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--border);
+    transition: background 0.2s;
+  }
+  .project-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .project-card:hover::before { background: var(--accent); }
+  .project-card.featured { grid-column: span 7; }
+  .project-card.secondary { grid-column: span 5; }
+  .project-card.third { grid-column: span 4; }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.1em;
+    font-variant-numeric: tabular-nums;
+  }
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: normal;
+    line-height: 1.25;
+  }
+  .project-desc {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+  .project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+  .project-link {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+  }
+  .project-link:hover { color: var(--accent-hi); }
+  .project-link svg { width: 10px; height: 10px; }
+
+  /* ── Experience ── */
+  #experience .exp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.06em;
+    padding-top: 0.15rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: normal;
+    margin-bottom: 0.25rem;
+  }
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .exp-desc {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+  .exp-desc li { margin-left: 1.1rem; margin-bottom: 0.4rem; }
+
+  /* ── Accomplishments ── */
+  #accomplishments .acco-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+  .acco-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+  .acco-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: var(--tag-bg);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .acco-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    font-weight: normal;
+  }
+  .acco-desc {
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Contact ── */
+  #contact {
+    text-align: center;
+    padding: 8rem 2.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  #contact h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: normal;
+    line-height: 1.15;
+    text-wrap: balance;
+    margin-bottom: 1.25rem;
+  }
+  #contact p {
+    color: var(--fg-muted);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--fg-muted);
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── Animations ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .project-card.featured,
+    .project-card.secondary,
+    .project-card.third { grid-column: span 12; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    footer { padding: 1.5rem 1.25rem; }
+  }
+  @media (max-width: 540px) {
+    .hero-name { font-size: 2.5rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* focus */
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RB<span>.</span>tech</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <span id="theme-label">Dark</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Senior Full Stack Engineer · .NET/C# · React/TypeScript · Enterprise AI</p>
+  <h1 class="hero-name">Rakesh<br>Baruah<em>.</em></h1>
+  <p class="hero-tagline">
+    I build cloud-native enterprise applications and AI systems end to end — RAG pipelines,
+    vector search, and LLM integrations on Azure OpenAI and Anthropic Claude — with the cost
+    governance, security, and resilience patterns production environments demand.
+  </p>
+  <div class="hero-ctas">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="#contact" class="btn-ghost">Get in Touch</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <h2>From RAG pipelines to published books — engineering with range.</h2>
+      <p>
+        I'm a full-stack engineer with 8+ years delivering production systems in .NET/C# and
+        React/TypeScript. At Crisis Prevention Institute, I design and build enterprise AI —
+        a document knowledge base with a full RAG pipeline, a provider-agnostic AI service layer
+        that swaps between Azure OpenAI and Anthropic Claude at runtime, and the cost governance
+        that gives leadership direct visibility into AI spend.
+      </p>
+      <p>
+        My path is unusual by design: an MFA from Columbia, two internationally published
+        textbooks on VR/AR development, front-end work for Showtime and Condé Nast, teaching
+        AP Computer Science, and architecture work at Microsoft. I'm trusted to drive
+        architecture decisions and represent engineering with customers and stakeholders —
+        because I can build the system and explain it.
+      </p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-card">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Years of experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">95+</div>
+        <div class="stat-label">GitHub repositories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Published tech books</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">MFA</div>
+        <div class="stat-label">Columbia University</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages &amp; Frameworks</div>
+      <div class="skill-tags">
+        <span class="tag">C#</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">.NET 8/9</span>
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">React 19</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Node.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI / ML</div>
+      <div class="skill-tags">
+        <span class="tag">Azure OpenAI</span>
+        <span class="tag">Anthropic Claude</span>
+        <span class="tag">Semantic Kernel</span>
+        <span class="tag">RAG pipelines</span>
+        <span class="tag">Vector embeddings</span>
+        <span class="tag">pgvector</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud &amp; Data</div>
+      <div class="skill-tags">
+        <span class="tag">Azure App Services</span>
+        <span class="tag">Azure Functions</span>
+        <span class="tag">Azure DevOps</span>
+        <span class="tag">Docker</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">EF Core</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Architecture &amp; DevOps</div>
+      <div class="skill-tags">
+        <span class="tag">Event-driven</span>
+        <span class="tag">NServiceBus</span>
+        <span class="tag">CQRS</span>
+        <span class="tag">Minimal APIs</span>
+        <span class="tag">SSE streaming</span>
+        <span class="tag">SAML / JWT / SSO</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Grafana / KQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Selected Projects</div>
+  <div class="projects-grid">
+    <!-- Featured -->
+    <div class="project-card featured reveal">
+      <div class="project-num">01 — Featured</div>
+      <div class="project-title">Subplot</div>
+      <p class="project-desc">
+        AI-powered writing assistant for authors, screenwriters, and playwrights — built on the
+        philosophy of helping you write better, not writing for you. Combines my two careers:
+        an MFA-trained writer's understanding of craft with production LLM engineering.
+      </p>
+      <div class="skill-tags" style="margin-top: 0.5rem;">
+        <span class="tag">TypeScript</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">LLM integration</span>
+      </div>
+      <div class="project-footer">
+        <div class="project-links">
+          <a href="https://github.com/Rakesh6720/subplot" target="_blank" rel="noopener" class="project-link">
+            GitHub
+            <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Secondary -->
+    <div class="project-card secondary reveal">
+      <div class="project-num">02</div>
+      <div class="project-title">Easel</div>
+      <p class="project-desc">
+        AI-powered Azure resource management application — describe the infrastructure you need
+        in plain language and Easel provisions it. .NET backend, Next.js frontend.
+      </p>
+      <div class="skill-tags" style="margin-top: 0.5rem;">
+        <span class="tag">C# / .NET</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Azure</span>
+      </div>
+      <div class="project-footer">
+        <div class="project-links">
+          <a href="https://github.com/Rakesh6720/easel" target="_blank" rel="noopener" class="project-link">GitHub <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="project-card third reveal">
+      <div class="project-num">03</div>
+      <div class="project-title">Subtrackt</div>
+      <p class="project-desc">
+        Online app for writers that tracks script and story submissions to publications
+        and contests, with a smart algorithm that prioritizes submissions and helps
+        strategize where to send work next.
+      </p>
+      <div class="skill-tags" style="margin-top: 0.5rem;">
+        <span class="tag">TypeScript</span>
+        <span class="tag">C# / .NET</span>
+      </div>
+      <div class="project-footer">
+        <div class="project-links">
+          <a href="https://github.com/Rakesh6720/Subtrackt-Frontend" target="_blank" rel="noopener" class="project-link">GitHub <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="project-card third reveal">
+      <div class="project-num">04</div>
+      <div class="project-title">Azure OpenAI Chat</div>
+      <p class="project-desc">
+        Full-stack .NET 9 + Next.js 15 chat application powered by an LLM deployed through
+        Azure AI Foundry — a reference implementation for enterprise chat.
+      </p>
+      <div class="skill-tags" style="margin-top: 0.5rem;">
+        <span class="tag">.NET 9</span>
+        <span class="tag">Next.js 15</span>
+        <span class="tag">Azure AI</span>
+      </div>
+      <div class="project-footer">
+        <div class="project-links">
+          <a href="https://github.com/Rakesh6720/AzureOpenAI_Chat_Demo" target="_blank" rel="noopener" class="project-link">GitHub <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-date">May 2023 — Present</div>
+      <div>
+        <div class="exp-role">Full Stack Developer, TypeScript &amp; C#</div>
+        <div class="exp-company">Crisis Prevention Institute · Milwaukee, WI</div>
+        <ul class="exp-desc">
+          <li>Designed and built an AI-powered document knowledge base with a full RAG pipeline — token-aware chunking, embeddings, pgvector similarity search, hybrid re-ranking — on .NET 9 Minimal APIs and React 19.</li>
+          <li>Engineered a provider-agnostic AI service layer swapping Azure OpenAI and Anthropic Claude at runtime, plus multi-turn chat with SSE token streaming and function calling.</li>
+          <li>Established AI cost governance — per-request token counting, cost estimation, and a budgeting dashboard giving leadership direct visibility into AI spend.</li>
+          <li>Overhauled production observability for distributed NServiceBus systems; implemented SSO/SLO with SAML and JWT against Ping IDP; remediated platform-wide WCAG accessibility defects.</li>
+        </ul>
+        <div class="skill-tags">
+          <span class="tag">.NET 8/9</span>
+          <span class="tag">React 19</span>
+          <span class="tag">Azure OpenAI</span>
+          <span class="tag">Anthropic Claude</span>
+          <span class="tag">pgvector</span>
+          <span class="tag">NServiceBus</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">Nov 2022 — Apr 2023</div>
+      <div>
+        <div class="exp-role">Full Stack Developer, TypeScript &amp; C#</div>
+        <div class="exp-company">Microsoft · Seattle, WA (Remote)</div>
+        <ul class="exp-desc">
+          <li>Spearheaded the architectural integration of OpenAI ChatGPT with Azure Bot Service inside a Microsoft Teams application (.NET 6, React, TypeScript).</li>
+          <li>Engineered secure REST API layers with Microsoft Graph and JWT; shipped Fluent UI components on business-critical Azure infrastructure in 2-week sprints.</li>
+        </ul>
+        <div class="skill-tags">
+          <span class="tag">.NET 6</span>
+          <span class="tag">Azure Bot Service</span>
+          <span class="tag">MS Graph</span>
+          <span class="tag">Fluent UI</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">Apr 2022 — Nov 2022</div>
+      <div>
+        <div class="exp-role">Full Stack Developer, TypeScript &amp; C#</div>
+        <div class="exp-company">Space150 · Minneapolis, MN (Remote)</div>
+        <ul class="exp-desc">
+          <li>Architected a cross-platform mobile e-commerce app with React Native, TypeScript, and Redux Toolkit.</li>
+          <li>Deployed an augmented-reality application for a Major League Baseball team (Unreal Engine, Node.js); served as primary engineering representative in customer conversations.</li>
+        </ul>
+        <div class="skill-tags">
+          <span class="tag">React Native</span>
+          <span class="tag">Redux Toolkit</span>
+          <span class="tag">Unreal Engine</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">Nov 2020 — Apr 2022</div>
+      <div>
+        <div class="exp-role">Computer Science Educator</div>
+        <div class="exp-company">Brookfield Academy / Milwaukee Public Schools</div>
+        <ul class="exp-desc">
+          <li>Taught AP Computer Science (Java, JavaScript) and led machine-learning classes in Python; recognized by district leadership and represented the CS summer program to the Milwaukee County School Board.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">Jan 2018 — Nov 2020</div>
+      <div>
+        <div class="exp-role">Full Stack Developer &amp; Published Author</div>
+        <div class="exp-company">APress / Springer Science Publishing · New York, NY (Remote)</div>
+        <ul class="exp-desc">
+          <li>Authored two internationally published technical textbooks on virtual and augmented reality (Unity, C#, Three.js, WebGL, WebXR); built and launched Android apps for Oculus Quest and Google Pixel.</li>
+        </ul>
+        <div class="skill-tags">
+          <span class="tag">Unity</span>
+          <span class="tag">WebXR</span>
+          <span class="tag">Three.js</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">Aug 2017 — Nov 2020</div>
+      <div>
+        <div class="exp-role">Full Stack C# Developer</div>
+        <div class="exp-company">Milwaukee Headache Clinic · Milwaukee, WI</div>
+        <ul class="exp-desc">
+          <li>Architected and deployed a secure patient-record application end to end — C#/SQL, MVC, Microsoft Identity, role-based authorization — meeting strict privacy requirements.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">2005 — 2011</div>
+      <div>
+        <div class="exp-role">Front End JavaScript Developer</div>
+        <div class="exp-company">Showtime · MTV · Viacom · Condé Nast · New York, NY</div>
+        <ul class="exp-desc">
+          <li>Built high-traffic, responsive client-side applications for major media brands.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOMPLISHMENTS -->
+<section id="accomplishments">
+  <div class="section-label">Highlights</div>
+  <div class="acco-grid">
+    <div class="acco-card reveal">
+      <div class="acco-icon">📚</div>
+      <div>
+        <div class="acco-title">Two Published Technical Books</div>
+        <p class="acco-desc">Internationally published textbooks on VR/AR development (Unity, WebXR, Three.js) with APress / Springer Science Publishing.</p>
+      </div>
+    </div>
+    <div class="acco-card reveal">
+      <div class="acco-icon">🤖</div>
+      <div>
+        <div class="acco-title">Enterprise AI in Production</div>
+        <p class="acco-desc">Full RAG pipeline, provider-agnostic LLM layer, and AI cost governance serving a national training organization.</p>
+      </div>
+    </div>
+    <div class="acco-card reveal">
+      <div class="acco-icon">🎓</div>
+      <div>
+        <div class="acco-title">Columbia University — MFA</div>
+        <p class="acco-desc">Master of Fine Arts, 2016. Bachelor of Arts, Northwestern University, 2005. A writer's eye applied to engineering.</p>
+      </div>
+    </div>
+    <div class="acco-card reveal">
+      <div class="acco-icon">⚾</div>
+      <div>
+        <div class="acco-title">MLB Augmented Reality App</div>
+        <p class="acco-desc">Deployed an AR application for a Major League Baseball team using Unreal Engine and Node.js.</p>
+      </div>
+    </div>
+    <div class="acco-card reveal">
+      <div class="acco-icon">🧠</div>
+      <div>
+        <div class="acco-title">Computer Vision &amp; ML Certificate</div>
+        <p class="acco-desc">Udacity / Nvidia, 2020. Plus .NET Full Stack Development Certificate, DevCode Camp, 2018.</p>
+      </div>
+    </div>
+    <div class="acco-card reveal">
+      <div class="acco-icon">🏫</div>
+      <div>
+        <div class="acco-title">Recognized Educator</div>
+        <p class="acco-desc">Honored by district leadership for outstanding performance teaching AP Computer Science and machine learning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content: center; max-width: none;">Contact</div>
+  <h2 class="reveal">Let's build something<br><em style="font-style:italic;color:var(--accent)">worth talking about.</em></h2>
+  <p class="reveal">
+    Open to senior engineering roles, enterprise AI work, and conversations
+    about hard problems. Milwaukee-based, remote-friendly.
+  </p>
+  <div class="contact-links reveal">
+    <a href="mailto:rbaruah@gmail.com" class="btn-primary">rbaruah@gmail.com</a>
+    <a href="https://github.com/Rakesh6720" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
+    <a href="https://www.linkedin.com/in/rakesh-baruah-9a02073/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Rakesh Baruah · <span style="color:var(--accent)">rakeshbaruah.tech</span></p>
+  <ul class="footer-links">
+    <li><a href="#hero">Top</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // ── Theme toggle ──
+  const root = document.documentElement;
+  const label = document.getElementById('theme-label');
+  let theme = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    label.textContent = t === 'dark' ? 'Light' : 'Dark';
+    localStorage.setItem('theme', t);
+    theme = t;
+  }
+
+  function toggleTheme() { applyTheme(theme === 'dark' ? 'light' : 'dark'); }
+  applyTheme(theme);
+
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
