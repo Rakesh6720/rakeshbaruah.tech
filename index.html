@@ -148,7 +148,7 @@
   }
 
   /* ── Sections ── */
-  section { padding: 3.5rem 2.5rem; max-width: 1120px; margin: 0 auto; scroll-margin-top: 4.5rem; }
+  section { padding: 2.75rem 2.5rem; max-width: 1120px; margin: 0 auto; scroll-margin-top: 4.5rem; }
   .section-label {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -358,9 +358,34 @@
   }
   .project-card:hover { transform: translateY(-2px); border-color: var(--accent); }
   .project-card:hover::before { background: var(--accent); }
-  .project-card.featured { grid-column: span 7; }
-  .project-card.secondary { grid-column: span 5; }
+  .project-card.featured { grid-column: span 4; }
+  .project-card.secondary { grid-column: span 4; }
   .project-card.third { grid-column: span 4; }
+  .projects-more {
+    grid-column: span 12;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .projects-more-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .projects-more a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    transition: color 0.2s;
+  }
+  .projects-more a:hover { color: var(--accent-hi); }
+  .projects-more .sep { color: var(--border); }
   .project-num {
     font-family: var(--mono);
     font-size: 0.65rem;
@@ -763,23 +788,11 @@
         </div>
       </div>
     </div>
-    <div class="project-card third reveal">
-      <div class="project-num">04</div>
-      <div class="project-title">Azure OpenAI Chat</div>
-      <p class="project-desc">
-        Full-stack .NET 9 + Next.js 15 chat application powered by an LLM deployed through
-        Azure AI Foundry — a reference implementation for enterprise chat.
-      </p>
-      <div class="skill-tags" style="margin-top: 0.5rem;">
-        <span class="tag">.NET 9</span>
-        <span class="tag">Next.js 15</span>
-        <span class="tag">Azure AI</span>
-      </div>
-      <div class="project-footer">
-        <div class="project-links">
-          <a href="https://github.com/Rakesh6720/AzureOpenAI_Chat_Demo" target="_blank" rel="noopener" class="project-link">GitHub <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
+    <div class="projects-more reveal">
+      <span class="projects-more-label">More on GitHub:</span>
+      <a href="https://github.com/Rakesh6720/AzureOpenAI_Chat_Demo" target="_blank" rel="noopener">Azure OpenAI Chat — .NET 9 + Next.js 15 enterprise chat reference</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/Rakesh6720" target="_blank" rel="noopener">github.com/Rakesh6720</a>
     </div>
   </div>
 </section>
