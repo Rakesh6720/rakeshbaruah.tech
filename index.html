@@ -27,7 +27,7 @@
       --bg:       #0D1B2A;
       --bg-card:  #162232;
       --fg:       #EFF1ED;
-      --fg-muted: #8CA0B3;
+      --fg-muted: #A3B5C6;
       --accent:   #D4A017;
       --accent-hi: #E8B429;
       --border:   #1E3248;
@@ -48,7 +48,7 @@
     --bg:       #0D1B2A;
     --bg-card:  #162232;
     --fg:       #EFF1ED;
-    --fg-muted: #8CA0B3;
+    --fg-muted: #A3B5C6;
     --accent:   #D4A017;
     --accent-hi: #E8B429;
     --border:   #1E3248;
@@ -117,9 +117,38 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .theme-toggle:hover { color: var(--fg); border-color: var(--fg-muted); }
+  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+  .nav-burger {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    line-height: 1;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  @media (max-width: 900px) {
+    .nav-burger { display: block; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; padding: 0.85rem 1.25rem; }
+  }
 
   /* ── Sections ── */
-  section { padding: 6rem 2.5rem; max-width: 1120px; margin: 0 auto; }
+  section { padding: 3.5rem 2.5rem; max-width: 1120px; margin: 0 auto; scroll-margin-top: 4.5rem; }
   .section-label {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -141,11 +170,12 @@
 
   /* ── Hero ── */
   #hero {
-    min-height: 100vh;
+    min-height: 72vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 6rem;
+    padding-top: 7rem;
+    padding-bottom: 2rem;
     max-width: 1120px;
     margin: 0 auto;
   }
@@ -209,29 +239,13 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-ghost:hover { border-color: var(--fg-muted); color: var(--fg); }
-  .hero-scroll {
-    margin-top: 5rem;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .scroll-line {
-    width: 40px;
-    height: 1px;
-    background: var(--border);
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-line { animation: none; }
+  .project-shot {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
   }
 
   /* ── About ── */
@@ -477,7 +491,7 @@
   /* ── Contact ── */
   #contact {
     text-align: center;
-    padding: 8rem 2.5rem;
+    padding: 5rem 2.5rem;
     max-width: 680px;
     margin: 0 auto;
   }
@@ -550,7 +564,6 @@
   /* ── Responsive ── */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.25rem; }
-    .nav-links { display: none; }
     section { padding: 4rem 1.25rem; }
     #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .project-card.featured,
@@ -574,16 +587,19 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">RB<span>.</span>tech</div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-    <span id="theme-label">Dark</span>
-  </button>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span id="theme-label">Dark</span>
+    </button>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">☰</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -598,10 +614,6 @@
   <div class="hero-ctas">
     <a href="#projects" class="btn-primary">View Projects</a>
     <a href="#contact" class="btn-ghost">Get in Touch</a>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll to explore
   </div>
 </section>
 
@@ -619,9 +631,10 @@
         that gives leadership direct visibility into AI spend.
       </p>
       <p>
-        My path is unusual by design: an MFA from Columbia, two internationally published
-        textbooks on VR/AR development, front-end work for Showtime and Condé Nast, teaching
-        AP Computer Science, and architecture work at Microsoft. I'm trusted to drive
+        My path is unusual by design: after building front ends for Showtime and Condé Nast,
+        I spent 2011–2017 earning an MFA at Columbia and writing professionally, then returned
+        to engineering through two internationally published textbooks on VR/AR development,
+        teaching AP Computer Science, and architecture work at Microsoft. I'm trusted to drive
         architecture decisions and represent engineering with customers and stakeholders —
         because I can build the system and explain it.
       </p>
@@ -632,16 +645,8 @@
         <div class="stat-label">Years of experience</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">95+</div>
-        <div class="stat-label">GitHub repositories</div>
-      </div>
-      <div class="stat-card">
         <div class="stat-num">2</div>
         <div class="stat-label">Published tech books</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">MFA</div>
-        <div class="stat-label">Columbia University</div>
       </div>
     </div>
   </div>
@@ -652,55 +657,36 @@
   <div class="section-label">Skills</div>
   <div class="skills-grid reveal">
     <div class="skill-group">
-      <div class="skill-group-title">Languages &amp; Frameworks</div>
+      <div class="skill-group-title">Core Engineering</div>
       <div class="skill-tags">
-        <span class="tag">C#</span>
+        <span class="tag">C# / .NET 8/9</span>
         <span class="tag">TypeScript</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">.NET 8/9</span>
-        <span class="tag">ASP.NET Core</span>
         <span class="tag">React 19</span>
-        <span class="tag">Next.js</span>
-        <span class="tag">Node.js</span>
+        <span class="tag">ASP.NET Core</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">AI / ML</div>
+      <div class="skill-group-title">AI Engineering</div>
       <div class="skill-tags">
         <span class="tag">Azure OpenAI</span>
         <span class="tag">Anthropic Claude</span>
-        <span class="tag">Semantic Kernel</span>
         <span class="tag">RAG pipelines</span>
-        <span class="tag">Vector embeddings</span>
         <span class="tag">pgvector</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Cloud &amp; Data</div>
+      <div class="skill-group-title">Cloud &amp; Architecture</div>
       <div class="skill-tags">
-        <span class="tag">Azure App Services</span>
-        <span class="tag">Azure Functions</span>
-        <span class="tag">Azure DevOps</span>
-        <span class="tag">Docker</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">SQL Server</span>
-        <span class="tag">EF Core</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Architecture &amp; DevOps</div>
-      <div class="skill-tags">
-        <span class="tag">Event-driven</span>
-        <span class="tag">NServiceBus</span>
-        <span class="tag">CQRS</span>
-        <span class="tag">Minimal APIs</span>
-        <span class="tag">SSE streaming</span>
+        <span class="tag">Azure</span>
+        <span class="tag">PostgreSQL / EF Core</span>
+        <span class="tag">Event-driven / NServiceBus</span>
         <span class="tag">SAML / JWT / SSO</span>
-        <span class="tag">GitHub Actions</span>
-        <span class="tag">Grafana / KQL</span>
       </div>
     </div>
   </div>
+  <p class="skills-certs reveal" style="font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--fg-muted); margin-top: 1.5rem;">
+    Certificates: Computer Vision &amp; Machine Learning — Udacity / Nvidia (2020) · .NET Full Stack Development — DevCode Camp (2018)
+  </p>
 </section>
 
 <!-- PROJECTS -->
@@ -710,6 +696,7 @@
     <!-- Featured -->
     <div class="project-card featured reveal">
       <div class="project-num">01 — Featured</div>
+      <img class="project-shot" src="assets/subplot.png" alt="Subplot landing page — An AI writing partner that knows your story and writes with you, not at you" loading="lazy">
       <div class="project-title">Subplot</div>
       <p class="project-desc">
         AI-powered writing assistant for authors, screenwriters, and playwrights — built on the
@@ -738,6 +725,7 @@
     <!-- Secondary -->
     <div class="project-card secondary reveal">
       <div class="project-num">02</div>
+      <img class="project-shot" src="assets/easel.png" alt="Easel landing page — Transform your ideas into Azure infrastructure" loading="lazy">
       <div class="project-title">Easel</div>
       <p class="project-desc">
         AI-powered Azure resource management application — describe the infrastructure you need
@@ -757,6 +745,7 @@
     </div>
     <div class="project-card third reveal">
       <div class="project-num">03</div>
+      <img class="project-shot" src="assets/subtrackt.png" alt="Subtrackt landing page — Never miss a submission window again" loading="lazy">
       <div class="project-title">Subtrackt</div>
       <p class="project-desc">
         Online app for writers that tracks script and story submissions to publications
@@ -901,55 +890,6 @@
   </div>
 </section>
 
-<!-- ACCOMPLISHMENTS -->
-<section id="accomplishments">
-  <div class="section-label">Highlights</div>
-  <div class="acco-grid">
-    <div class="acco-card reveal">
-      <div class="acco-icon">📚</div>
-      <div>
-        <div class="acco-title">Two Published Technical Books</div>
-        <p class="acco-desc">Internationally published textbooks on VR/AR development (Unity, WebXR, Three.js) with APress / Springer Science Publishing.</p>
-      </div>
-    </div>
-    <div class="acco-card reveal">
-      <div class="acco-icon">🤖</div>
-      <div>
-        <div class="acco-title">Enterprise AI in Production</div>
-        <p class="acco-desc">Full RAG pipeline, provider-agnostic LLM layer, and AI cost governance serving a national training organization.</p>
-      </div>
-    </div>
-    <div class="acco-card reveal">
-      <div class="acco-icon">🎓</div>
-      <div>
-        <div class="acco-title">Columbia University — MFA</div>
-        <p class="acco-desc">Master of Fine Arts, 2016. Bachelor of Arts, Northwestern University, 2005. A writer's eye applied to engineering.</p>
-      </div>
-    </div>
-    <div class="acco-card reveal">
-      <div class="acco-icon">⚾</div>
-      <div>
-        <div class="acco-title">MLB Augmented Reality App</div>
-        <p class="acco-desc">Deployed an AR application for a Major League Baseball team using Unreal Engine and Node.js.</p>
-      </div>
-    </div>
-    <div class="acco-card reveal">
-      <div class="acco-icon">🧠</div>
-      <div>
-        <div class="acco-title">Computer Vision &amp; ML Certificate</div>
-        <p class="acco-desc">Udacity / Nvidia, 2020. Plus .NET Full Stack Development Certificate, DevCode Camp, 2018.</p>
-      </div>
-    </div>
-    <div class="acco-card reveal">
-      <div class="acco-icon">🏫</div>
-      <div>
-        <div class="acco-title">Recognized Educator</div>
-        <p class="acco-desc">Honored by district leadership for outstanding performance teaching AP Computer Science and machine learning.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-label" style="justify-content: center; max-width: none;">Contact</div>
@@ -959,7 +899,7 @@
     about hard problems. Milwaukee-based, remote-friendly.
   </p>
   <div class="contact-links reveal">
-    <a href="mailto:rbaruah@gmail.com" class="btn-primary">rbaruah@gmail.com</a>
+    <a href="#" id="email-link" class="btn-primary">Email me</a>
     <a href="https://github.com/Rakesh6720" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
     <a href="https://www.linkedin.com/in/rakesh-baruah-9a02073/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
   </div>
@@ -1004,6 +944,22 @@
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   revealEls.forEach(el => observer.observe(el));
+
+  // ── Mobile menu ──
+  function toggleMenu() {
+    const links = document.getElementById('nav-links');
+    const burger = document.querySelector('.nav-burger');
+    const open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  }
+  document.querySelectorAll('#nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open')));
+
+  // ── Email (assembled at runtime to deter scrapers) ──
+  const emailLink = document.getElementById('email-link');
+  const addr = ['rbaruah', 'gmail.com'].join('@');
+  emailLink.href = 'mailto:' + addr;
+  emailLink.textContent = addr;
 </script>
 
 </body>
