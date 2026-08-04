@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Rakesh Baruah - Full Stack Engineer. .NET/C#, React/TypeScript, Enterprise AI.">
+<meta name="description" content="Rakesh Baruah - Full Stack Engineer. .NET/C#, React/TypeScript, Azure.">
 
-<title>Rakesh Baruah — Full Stack Engineer</title>
+<title>Rakesh Baruah · Full Stack Engineer</title>
 <style>
   /* ── Tokens ── */
   :root {
@@ -358,9 +358,9 @@
   }
   .project-card:hover { transform: translateY(-2px); border-color: var(--accent); }
   .project-card:hover::before { background: var(--accent); }
-  .project-card.featured { grid-column: span 4; }
-  .project-card.secondary { grid-column: span 4; }
-  .project-card.third { grid-column: span 4; }
+  .project-card.featured { grid-column: span 6; }
+  .project-card.secondary { grid-column: span 6; }
+  .project-card.third { grid-column: span 6; }
   .projects-more {
     grid-column: span 12;
     display: flex;
@@ -629,12 +629,12 @@
 
 <!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">Full Stack Engineer · .NET/C# · React/TypeScript · Enterprise AI</p>
+  <p class="hero-eyebrow">Full Stack Engineer · .NET/C# · React/TypeScript</p>
   <h1 class="hero-name">Rakesh<br>Baruah<em>.</em></h1>
   <p class="hero-tagline">
-    I build cloud-native enterprise applications and AI systems end to end — RAG pipelines,
-    vector search, and LLM integrations on Azure OpenAI and Anthropic Claude — with the cost
-    governance, security, and resilience patterns production environments demand.
+    I build cloud-native enterprise applications in .NET/C# and React/TypeScript, with a
+    focus on the architecture, security, and resilience patterns production environments
+    demand.
   </p>
   <div class="hero-ctas">
     <a href="#projects" class="btn-primary">View Projects</a>
@@ -647,23 +647,24 @@
   <div class="section-label">About</div>
   <div class="about-grid reveal">
     <div class="about-text">
-      <h2>From RAG pipelines to published books — engineering with range.</h2>
+      <h2>From production systems to published books: engineering with range.</h2>
       <p>
         I'm a full-stack engineer with 8+ years delivering production systems in .NET/C# and
-        React/TypeScript, at companies including Crisis Prevention Institute and Microsoft. My
-        focus now is enterprise AI: I've built RAG pipelines — token-aware chunking, pgvector
-        similarity search, hybrid re-ranking — provider-agnostic service layers that swap between
-        Azure OpenAI and Anthropic Claude at runtime, and tooling to track and govern AI spend. I
-        care as much about the cost, security, and resilience patterns around AI as the models
-        themselves.
+        React/TypeScript, at companies including Crisis Prevention Institute and Microsoft. I
+        work across both sides of the stack: REST API design and data modeling in PostgreSQL
+        and Entity Framework Core on the back end, React and TypeScript on the front,
+        authentication and identity integration with SAML and JWT, and production
+        troubleshooting through telemetry. I care about accessibility as a correctness
+        problem, not a checkbox. My current focus is enterprise AI in .NET, and building
+        toward depth there.
       </p>
       <p>
-        My path is unusual by design: after building front ends for Showtime and Condé Nast,
-        I spent 2011–2017 earning an MFA at Columbia and writing professionally, then returned
-        to engineering through two internationally published textbooks on VR/AR development,
-        teaching AP Computer Science, and architecture work at Microsoft. I'm trusted to drive
-        architecture decisions and represent engineering with customers and stakeholders —
-        because I can build the system and explain it.
+        My path is unusual by design: I left an early career in media to earn an MFA at
+        Columbia and write professionally, then returned to engineering through two
+        internationally published textbooks on VR/AR development, teaching computer science,
+        and front-end work at Microsoft. I'm trusted to drive technical decisions and
+        represent engineering with customers and stakeholders, because I can build the system
+        and explain it.
       </p>
     </div>
     <div class="about-stats reveal">
@@ -693,26 +694,26 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">AI Engineering</div>
+      <div class="skill-group-title">Front End</div>
       <div class="skill-tags">
-        <span class="tag">Azure OpenAI</span>
-        <span class="tag">Anthropic Claude</span>
-        <span class="tag">RAG pipelines</span>
-        <span class="tag">pgvector</span>
+        <span class="tag">React / Redux Toolkit</span>
+        <span class="tag">React Native</span>
+        <span class="tag">Accessibility / WCAG</span>
+        <span class="tag">Fluent UI</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Cloud &amp; Architecture</div>
+      <div class="skill-group-title">Cloud &amp; Data</div>
       <div class="skill-tags">
         <span class="tag">Azure</span>
         <span class="tag">PostgreSQL / EF Core</span>
-        <span class="tag">Event-driven / NServiceBus</span>
+        <span class="tag">REST APIs</span>
         <span class="tag">SAML / JWT / SSO</span>
       </div>
     </div>
   </div>
   <p class="skills-certs reveal" style="font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--fg-muted); margin-top: 1.5rem;">
-    Certificates: Computer Vision &amp; Machine Learning — Udacity / Nvidia (2020) · .NET Full Stack Development — DevCode Camp (2018)
+    Certificates: Computer Vision &amp; Machine Learning, Udacity / Nvidia (2020) · .NET Full Stack Development, DevCode Camp (2018)
   </p>
 </section>
 
@@ -722,13 +723,13 @@
   <div class="projects-grid">
     <!-- Featured -->
     <div class="project-card featured reveal">
-      <div class="project-num">01 — Featured</div>
-      <img class="project-shot" src="assets/subplot.png" alt="Subplot landing page — An AI writing partner that knows your story and writes with you, not at you" loading="lazy">
+      <div class="project-num">01 · Featured</div>
+      <img class="project-shot" src="assets/subplot.png" alt="Subplot landing page: An AI writing partner that knows your story and writes with you, not at you" loading="lazy">
       <div class="project-title">Subplot</div>
       <p class="project-desc">
-        AI-powered writing assistant for authors, screenwriters, and playwrights — built on the
+        AI-powered writing assistant for authors, screenwriters, and playwrights, built on the
         philosophy of helping you write better, not writing for you. Combines my two careers:
-        an MFA-trained writer's understanding of craft with production LLM engineering.
+        an MFA-trained writer's understanding of craft with LLM engineering.
       </p>
       <div class="skill-tags" style="margin-top: 0.5rem;">
         <span class="tag">React 19 + Vite</span>
@@ -749,30 +750,9 @@
         </div>
       </div>
     </div>
-    <!-- Secondary -->
     <div class="project-card secondary reveal">
       <div class="project-num">02</div>
-      <img class="project-shot" src="assets/easel.png" alt="Easel landing page — Transform your ideas into Azure infrastructure" loading="lazy">
-      <div class="project-title">Easel</div>
-      <p class="project-desc">
-        AI-powered Azure resource management application — describe the infrastructure you need
-        in plain language and Easel provisions it. .NET backend, Next.js frontend.
-      </p>
-      <div class="skill-tags" style="margin-top: 0.5rem;">
-        <span class="tag">C# / .NET</span>
-        <span class="tag">Next.js</span>
-        <span class="tag">Azure</span>
-      </div>
-      <div class="project-footer">
-        <div class="project-links">
-          <a href="https://easel.cloud" target="_blank" rel="noopener" class="project-link">Live <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-          <a href="https://github.com/Rakesh6720/easel" target="_blank" rel="noopener" class="project-link">GitHub <svg viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="project-card third reveal">
-      <div class="project-num">03</div>
-      <img class="project-shot" src="assets/subtrackt.png" alt="Subtrackt landing page — Never miss a submission window again" loading="lazy">
+      <img class="project-shot" src="assets/subtrackt.png" alt="Subtrackt landing page: Never miss a submission window again" loading="lazy">
       <div class="project-title">Subtrackt</div>
       <p class="project-desc">
         Online app for writers that tracks script and story submissions to publications
@@ -792,7 +772,7 @@
     </div>
     <div class="projects-more reveal">
       <span class="projects-more-label">More on GitHub:</span>
-      <a href="https://github.com/Rakesh6720/AzureOpenAI_Chat_Demo" target="_blank" rel="noopener">Azure OpenAI Chat — .NET 9 + Next.js 15 enterprise chat reference</a>
+      <a href="https://github.com/Rakesh6720/AzureOpenAI_Chat_Demo" target="_blank" rel="noopener">Azure OpenAI Chat: .NET 9 + Next.js 15 enterprise chat reference</a>
       <span class="sep">·</span>
       <a href="https://github.com/Rakesh6720" target="_blank" rel="noopener">github.com/Rakesh6720</a>
     </div>
@@ -806,32 +786,29 @@
     <div class="exp-item reveal">
       <div class="exp-date">May 2023 — Present</div>
       <div>
-        <div class="exp-role">Full Stack Developer, TypeScript &amp; C#</div>
+        <div class="exp-role">Software Engineer</div>
         <div class="exp-company">Crisis Prevention Institute · Milwaukee, WI</div>
         <ul class="exp-desc">
-          <li>Overhauled production observability for distributed NServiceBus systems; implemented SSO/SLO with SAML and JWT against Ping IDP; remediated platform-wide WCAG accessibility defects.</li>
-          <li>Drove backend architecture for a self-service class management system: graph-based configuration model, REST API contracts, and an EF Core migration strategy.</li>
-          <li>On my own initiative, built a proof-of-concept for AI-powered document search — a full RAG pipeline (token-aware chunking, embeddings, pgvector similarity search, hybrid re-ranking) with a provider-agnostic layer swapping Azure OpenAI and Anthropic Claude at runtime, on .NET 9 and React 19.</li>
-          <li>Extended the prototype with multi-turn chat over SSE token streaming, function calling, and cost-tracking tooling — per-request token counting, cost estimation, and a budgeting dashboard.</li>
+          <li>Full-stack development on enterprise training and certification platforms built with .NET and React/TypeScript.</li>
+          <li>Work across both sides of the stack: authentication and identity integration, data-layer correctness in Entity Framework Core, accessibility on the React front end, and production troubleshooting using telemetry to trace database contention and distributed-system failures.</li>
         </ul>
         <div class="skill-tags">
           <span class="tag">.NET 8/9</span>
-          <span class="tag">React 19</span>
-          <span class="tag">Azure OpenAI</span>
-          <span class="tag">Anthropic Claude</span>
-          <span class="tag">pgvector</span>
-          <span class="tag">NServiceBus</span>
+          <span class="tag">React</span>
+          <span class="tag">PostgreSQL / EF Core</span>
+          <span class="tag">SAML / JWT</span>
+          <span class="tag">Application Insights</span>
         </div>
       </div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-date">Nov 2022 — Apr 2023</div>
       <div>
-        <div class="exp-role">Full Stack Developer, TypeScript &amp; C#</div>
+        <div class="exp-role">Software Engineer</div>
         <div class="exp-company">Microsoft · Seattle, WA (Remote)</div>
         <ul class="exp-desc">
-          <li>Spearheaded the architectural integration of OpenAI ChatGPT with Azure Bot Service inside a Microsoft Teams application (.NET 6, React, TypeScript).</li>
-          <li>Engineered secure REST API layers with Microsoft Graph and JWT; shipped Fluent UI components on business-critical Azure infrastructure in 2-week sprints.</li>
+          <li>Front-end development on a Microsoft Teams application built with .NET 6, React, and TypeScript.</li>
+          <li>Built and shipped Fluent UI components against Azure infrastructure, wired secure REST calls from React using Microsoft Graph and JWT, and contributed to the team's work integrating conversational AI into the Teams surface.</li>
         </ul>
         <div class="skill-tags">
           <span class="tag">.NET 6</span>
@@ -844,7 +821,7 @@
     <div class="exp-item reveal">
       <div class="exp-date">Apr 2022 — Nov 2022</div>
       <div>
-        <div class="exp-role">Full Stack Developer, TypeScript &amp; C#</div>
+        <div class="exp-role">Software Engineer</div>
         <div class="exp-company">Space150 · Minneapolis, MN (Remote)</div>
         <ul class="exp-desc">
           <li>Architected a cross-platform mobile e-commerce app with React Native, TypeScript, and Redux Toolkit.</li>
@@ -863,7 +840,7 @@
         <div class="exp-role">Computer Science Educator</div>
         <div class="exp-company">Brookfield Academy / Milwaukee Public Schools</div>
         <ul class="exp-desc">
-          <li>Taught AP Computer Science (Java, JavaScript) and led machine-learning classes in Python; recognized by district leadership and represented the CS summer program to the Milwaukee County School Board.</li>
+          <li>Taught computer science (Java, JavaScript) and web design, and led machine-learning classes in Python; recognized by district leadership and represented the CS summer program to the Milwaukee County School Board.</li>
         </ul>
       </div>
     </div>
@@ -888,17 +865,17 @@
         <div class="exp-role">Full Stack C# Developer</div>
         <div class="exp-company">Milwaukee Headache Clinic · Milwaukee, WI</div>
         <ul class="exp-desc">
-          <li>Architected and deployed a secure patient-record application end to end — C#/SQL, MVC, Microsoft Identity, role-based authorization — meeting strict privacy requirements.</li>
+          <li>Built and deployed a secure patient-record application end to end (C#/SQL, MVC, Microsoft Identity, role-based authorization), meeting strict privacy requirements.</li>
         </ul>
       </div>
     </div>
     <div class="exp-item reveal">
-      <div class="exp-date">2005 — 2011</div>
+      <div class="exp-date">2005 — 2008</div>
       <div>
-        <div class="exp-role">Front End JavaScript Developer</div>
-        <div class="exp-company">Showtime · MTV · Viacom · Condé Nast · New York, NY</div>
+        <div class="exp-role">Digital Media &amp; Video Encoding</div>
+        <div class="exp-company">Showtime Networks · Black Entertainment Television · New York, NY</div>
         <ul class="exp-desc">
-          <li>Built high-traffic, responsive client-side applications for major media brands.</li>
+          <li>Digitized video assets and encoded them for digital platforms using MPEG codecs, Flash, and the Akamai video server; logged tape and maintained digital video assets and legal releases in the Pilotware database.</li>
         </ul>
       </div>
     </div>
